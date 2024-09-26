@@ -20,8 +20,7 @@ export default function AgregarEmpleado() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const urlBase = "http://localhost:8080/api/empleados";
-        await axios.post(urlBase, empleado);
+        await axios.post("/api/empleados", empleado);
         // Redirigimos a la pagina de inicio
         navegacion('/');
     }

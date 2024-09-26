@@ -4,8 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 export default function EditarEmpleado() {
 
-    const urlBase = "http://localhost:8080/api/empleados";
-
     let navegacion = useNavigate();
 
     const {id} = useParams();
@@ -23,7 +21,7 @@ export default function EditarEmpleado() {
     },[])
 
     const cargarEmpleado = async () => {
-        const resultado = await axios.get(`${urlBase}/${id}`)
+        const resultado = await axios.get(`/api/empleados/${id}`)
         setEmpleado(resultado.data);
     }
 
@@ -34,7 +32,7 @@ export default function EditarEmpleado() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(`${urlBase}/${id}`, empleado);
+        await axios.put(`/api/empleados/${id}`, empleado);
         // Redirigimos a la pagina de inicio
         navegacion('/');
     }

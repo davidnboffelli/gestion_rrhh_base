@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 export default function ListadoEmpleados() {
 
-    const urlBase = "http://localhost:8080/api/empleados";
-
     const[empleados, setEmpleados] = useState([]);
 
     useEffect(() => {
@@ -14,14 +12,14 @@ export default function ListadoEmpleados() {
     }, []);
 
     const cargarEmpleados = async () => {
-        const resultado = await axios.get(urlBase);
+        const resultado = await axios.get("/api/empleados");
         console.log("Resultado cargar empleados");
         console.log(resultado.data);
         setEmpleados(resultado.data);
     }
 
     const eliminarEmpleado = async (id) => {
-        await axios.delete(`${urlBase}/${id}`);
+        await axios.delete(`/api/empleados/${id}`);
         cargarEmpleados();
     }
 
